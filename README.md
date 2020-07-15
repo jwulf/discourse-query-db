@@ -43,6 +43,25 @@ You can query the database with a query that you write in the file `custom-query
 
 These queries are written in Javascript. The `query` function receives an [entire topic](https://docs.discourse.org/#tag/Topics/paths/~1t~1{id}.json/get), including all the posts in the topic. The query function should return `true` if the topic should count toward the results, and `false` if it should not.
 
+Here is an example query, one that counts how many questions were asked in the Forum on a Monday in 2019 or 2020, and contained the word "javascript":
+
+```typescript 
+export const query = (doc: Topic) => {
+  const originalPostersQuestion = doc.post_stream.posts[0];
+  const questionAsked = dayjs(doc.post_stream.posts[0].updated_at);
+  // Make case-insensitive by forcing to lower case
+  const text = originalPostersQuestion.cooked.toLowerCase();
+
+  // scans for questions asked on a Monday in 2019 or 2020 that contain the word "javascript"
+  const isHit =
+    (questionAsked.year() === 2020 || questionAsked.year() === 2019) &&
+    questionAsked.day() === Day.Monday &&
+    text.includes("javascript");
+
+  return isHit;
+};
+```
+
 ## Running a query
 
 To run the query against the database:
