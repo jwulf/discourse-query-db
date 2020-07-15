@@ -1,0 +1,25 @@
+{
+  "name": "discourse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/async": "^3.2.3",
+    "@types/node": "^14.0.22",
+    "@types/pouchdb": "^6.4.0",
+    "async": "^3.2.0",
+    "axios": "^0.19.2",
+    "dayjs": "^1.8.29",
+    "dotenv": "^8.2.0",
+    "google-spreadsheet": "^3.0.11",
+    "pouchdb": "^7.2.1",
+    "pouchdb-find": "^7.2.1",
+    "pouchdb-upsertex": "^0.1.0"
+  }
+}
