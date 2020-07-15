@@ -52,19 +52,18 @@ These queries are written in Javascript. The `query` function receives an [entir
 Here is an example query, one that counts how many questions were asked in the Forum on a Monday in 2019 or 2020, and contained the word "javascript":
 
 ```typescript 
-export const query = (doc: Topic) => {
+export const query = (doc: Topic): boolean | number => {
   const originalPostersQuestion = doc.post_stream.posts[0];
   const questionAsked = dayjs(doc.post_stream.posts[0].updated_at);
-  // Make case-insensitive by forcing to lower case
   const text = originalPostersQuestion.cooked.toLowerCase();
 
   // scans for questions asked on a Monday in 2019 or 2020 that contain the word "javascript"
-  const isHit =
+  const javascriptQuestionOnAMondayin2019or2020 =
     (questionAsked.year() === 2020 || questionAsked.year() === 2019) &&
     questionAsked.day() === Day.Monday &&
     text.includes("javascript");
 
-  return isHit;
+  return javascriptQuestionOnAMondayin2019or2020;
 };
 ```
 

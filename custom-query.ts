@@ -11,12 +11,12 @@ export const query = (doc: Topic): boolean | number => {
   const text = originalPostersQuestion.cooked.toLowerCase();
 
   // scans for questions asked on a Monday in 2019 or 2020 that contain the word "javascript"
-  const javascriptOnAMondayin2019or2020 =
+  const javascriptQuestionOnAMondayin2019or2020 =
     (questionAsked.year() === 2020 || questionAsked.year() === 2019) &&
     questionAsked.day() === Day.Monday &&
     text.includes("javascript");
 
-  return javascriptOnAMondayin2019or2020;
+  return javascriptQuestionOnAMondayin2019or2020;
 };
 
 /*
