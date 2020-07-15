@@ -45,7 +45,9 @@ To get all new responses to topics as well as new topics, run a complete update.
 
 You can query the database with a query that you write in the file `custom-query.ts`.
 
-These queries are written in Javascript. The `query` function receives an [entire topic](https://docs.discourse.org/#tag/Topics/paths/~1t~1{id}.json/get), including all the posts in the topic. The query function should return `true` if the topic should count toward the results, and `false` if it should not.
+At the moment, the only thing that can be queried is "_how many times did X happen each month_".
+
+These queries are written in Javascript. The `query` function receives an [entire topic](https://docs.discourse.org/#tag/Topics/paths/~1t~1{id}.json/get), including all the posts in the topic. The query function should return `true` or a number if the topic should count toward the results, and `false` if it should not. If you return true, it will add 1 to the result.
 
 Here is an example query, one that counts how many questions were asked in the Forum on a Monday in 2019 or 2020, and contained the word "javascript":
 

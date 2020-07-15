@@ -30,12 +30,14 @@ db.allDocs({ include_docs: true }).then(async (docs) => {
   docs.rows.forEach((doc) => {
     const date = dayjs(doc.doc?.post_stream.posts[0].updated_at);
     const isHit = query(doc.doc!);
+    const increment =
+      isHit === true ? 1 : typeof isHit === "number" ? isHit : 0;
     const year = +date.year();
     const month = +date.month() + 1;
     results[year] = results[year] || {};
     results[year][month] = results[year][month] || {};
     const result = results[year][month];
-    result.posts = result.posts ? result.posts + 1 : 1;
+    result.posts = result.posts ? result.posts + increment : 1;
     if (isHit) {
       result.hits = result.hits ? result.hits + 1 : 1;
     }
