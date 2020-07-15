@@ -131,6 +131,14 @@ To change the name of the tab that the query results will be added to, set the f
 GOOGLE_TAB_NAME=Kubernetes
 ```
 
+## Disable the Google Sheet update 
+
+You may want to run queries without updating the Google Sheets, after setting it up. To do that, add the following to the `.env` file:
+
+```
+GOOGLE_DISABLED=true
+```
+
 ## Updating a Google Sheet 
 
 To update a Google sheet, you should delete the tab and re-run the query. This will regenerate the entire sheet.
