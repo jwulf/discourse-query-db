@@ -2,6 +2,10 @@
 
 This project allows you to pull down all posts from a Discourse Forum to a local [PouchDB](https://pouchdb.com/) database. Once in that database, you can run queries against the database to count the number of posts that contain keywords. The query results can optionally by sent to a Google Sheets spreadsheet.
 
+## Requirements
+
+You will need [Node.js](https://nodejs.org/en/) on your machine.
+
 ## Setup
 
 * Git clone this repo.
